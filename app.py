@@ -7,10 +7,9 @@ from sklearn.preprocessing import MinMaxScaler
 
 st.set_page_config(page_title="Tesla Stock Prediction", layout="centered")
 
-st.title("🚗 Tesla Stock Price Prediction (LSTM)")
+st.title("Tesla Stock Price Prediction (LSTM)")
 st.write("Predict future Tesla stock closing prices using a trained LSTM model.")
 
-# Load model (modern Keras format – no compile issues)
 model = load_model("lstm_final_tuned_model.keras")
 
 forecast_days = st.selectbox("Select Forecast Horizon (Days)", [1, 5, 10])
@@ -36,7 +35,7 @@ if uploaded_file is not None:
 
     predicted_prices = scaler.inverse_transform(prediction)[0]
 
-    st.subheader("📈 Predicted Prices")
+    st.subheader("Predicted Prices")
     for i, price in enumerate(predicted_prices, 1):
         st.write(f"Day {i}: {price:.2f}")
 
@@ -46,3 +45,4 @@ if uploaded_file is not None:
     plt.xlabel("Days Ahead")
     plt.ylabel("Price")
     st.pyplot(plt)
+
